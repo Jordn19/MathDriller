@@ -1,11 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
+body {
+  background-color: #f4f1e8;
+}
+
+h1 {
+  font-size: 50px;
+  color: black;
+  font-family: League Gothic;
+  text-align: center;
+}
+
+h2 { 
+  font-size: 35px;
+  color: black;
+  font-family: League Gothic;
+  text-align: center;
+}
+
 
 .container {
 display: grid;
-grid-template-columns: 100px 100px 100px;
-gap: 10px;
+grid-template-columns: 500px 500px 500px;
+justify-content: center;
 }
 
 .container div {
-  height: 100px;
-  border: 1px soild black;
+  border: 1.5px solid black;
+  padding: 40px;
+  text-align: center;
+  font-weight: bold;
+  font-family: League Gothic;
+  font-size: 27px;
 }
