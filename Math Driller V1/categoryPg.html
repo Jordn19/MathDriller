@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Math Driller</title>
@@ -9,25 +9,42 @@
   <body>
     <header>
       <h1>Math Driller</h1>
-      <h2>Select Subject</h2>
+      <h2 id="page-subtitle">Select Category</h2>
     </header>
 
   
     <main>
-<div class="container">
-<div>1</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
-<div>5</div>
-<div>6</div>
-<div>7</div>
-<div>8</div>
-<div>9</div>
-<div>10</div>
-<div>11</div>
-<div>12</div>
+<nav> 
+<div class="selection-grid" id="exercise-grid">
 </div>
+</nav>
     </main>
+
+    <script>
+
+const urlParams = new URLSearchParams (window.location.search);
+const subject = urlParams.get('subject') || 'subject';
+
+document.getElementById ('page-subtitle').innerText = `Select ${subject.charAt(0).toUpperCase() + subject.slice(1)} Exercise`;
+
+const dynamicExercises = {
+"arithmetic": ["Addition", "Subtraction", "Multiplication", "Division"], 
+"algebra": ["Linear Equations", "Quadractic Expressions", "Factoring"], 
+"geometry": ["Area of Circles", "Pythagorean Theorem", "Volume"]
+};
+
+const exercisesList = dynamicExercises[subject] || ["Exercise 1", "Exercise 2", "Exercise 3"];
+
+const grid = document.getElementById('exercise-grid')
+exercisesList.forEach(exerciseName => {
+  const boxLink = document.createElement('a');
+
+boxLink.innerText = exerciseName;
+boxLink.href = `questionPg.html?subject=${subject}&exercise=${exerciseName}`;
+
+grid.appendChild(boxLink);
+});
+
+    </script>
   </body>
 </html>
