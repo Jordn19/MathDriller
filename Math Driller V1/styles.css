@@ -18,6 +18,14 @@ h2 {
   text-align: center;
 }
 
+.nav-top-layout {
+  font-size: 50px;
+  color: black;
+  font-family: 'League Gothic';
+  text-align: left;
+}
+
+
 .selection-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(280px, 500px));
@@ -43,4 +51,43 @@ align-content: center;
 .selection-grid a:hover {
   background-color: #c3beb0;
   cursor: pointer;
+}
+
+.whitebox-layout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.white-box {
+  background-color: white;
+  width: 90%;
+  max-width: 800px;
+  min-height: 400px;
+  padding: 40px;
+  border-radius: 12px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.whitebox-states {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.math-problem {
+  font-family: 'League Gothic';
+  font-size: 250%;
+  color: black;
+}
+
+.hidden {
+  display: none;
 }

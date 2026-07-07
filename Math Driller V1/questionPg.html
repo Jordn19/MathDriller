@@ -7,8 +7,46 @@
      <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header id="page-subtitle"></header>
-    <main></main>
-    <footer></footer>
+    <header>
+    <h1 id="page-subtitle">Exercise Name</h1>
+    </header>
+
+
+    <main class="whitebox-layout">
+<div class="white-box">
+<div id="question-state" class="whitebox-states">
+<div class="math-problem">5 +7</div>
+</div>
+
+<div id="answer-state"  class="whitebox-states hidden">
+  <div class="math-problem">12</div>
+</div>
+</div>
+    </main>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const exercise = urlParams.get('exercise') || 'Exercise'
+
+const pageSubtitle = document.getElementById('page-subtitle');
+pageSubtitle.innerText = exercise; 
+
+const whiteBox =document.querySelector('.white-box');
+const questionState = document.getElementById('question-state');
+const answerState = document.getElementById('answer-state')
+
+whiteBox.addEventListener('click', () => {
+  if(answerState.classList.contains('hidden')) {
+    questionState.classList.add('hidden');
+    answerState.classList.remove('hidden');
+    pageSubtitle.innerText = "Answer";
+  } else {
+    answerState.classList.add('hidden');
+    questionState.classList.remove('hidden');
+    pageSubtitle.innerText = exercise;
+  }
+});
+
+    </script>
   </body>
 </html>
