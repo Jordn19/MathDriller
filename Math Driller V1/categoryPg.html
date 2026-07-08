@@ -21,26 +21,28 @@
     <script>
 
 const urlParams = new URLSearchParams (window.location.search);
-const subject = urlParams.get('subject') || 'subject';
+const subject = urlParams.get('subject') || 'arithmetic';
 
 document.getElementById ('page-subtitle').innerText = `Select ${subject.charAt(0).toUpperCase() + subject.slice(1)} Exercise`;
 
-const dynamicExercises = {
-"arithmetic": ["Addition", "Subtraction", "Multiplication", "Division"], 
-"algebra": ["Linear Equations", "Quadractic Expressions", "Factoring"], 
-"geometry": ["Area of Circles", "Pythagorean Theorem", "Volume"]
-};
+const grid = document.getElementById('exercise-grid');
+fetch('exercises.json')
+.then(response => response.json())
+.then(dynamicExercises => {
 
-const exercisesList = dynamicExercises[subject] || ["Exercise 1", "Exercise 2", "Exercise 3"];
+const exercisesList = dynamicExercises[subject] || ["Coming soon...", "Coming soon..", "Coming soon..."];
 
-const grid = document.getElementById('exercise-grid')
 exercisesList.forEach(exerciseName => {
   const boxLink = document.createElement('a');
-
 boxLink.innerText = exerciseName;
-boxLink.href = `questionPg.html?subject=${subject}&exercise=${exerciseName}`;
 
+boxLink.href = `questionPg.html?subject=${subject}&exercise=${encodeURIComponent(exerciseName)}`;
 grid.appendChild(boxLink);
+});
+
+})
+.catch(error => {
+ console.error("Could not load exercises:", error);
 });
 
     </script>

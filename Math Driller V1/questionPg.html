@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Math Driller</title>
@@ -11,18 +11,23 @@
     <h1 id="page-subtitle">Exercise Name</h1>
     </header>
 
-
     <main class="whitebox-layout">
 <div class="white-box">
 <div id="question-state" class="whitebox-states">
-<div class="math-problem">5 +7</div>
+<div class="math-problem" id="question-text">Loading...</div>
 </div>
 
 <div id="answer-state"  class="whitebox-states hidden">
-  <div class="math-problem">12</div>
+  <div class="math-problem" id="answer-text">Loading...</div>
 </div>
 </div>
     </main>
+
+<div class="reset-btn">
+  <button Id="next-btn" class="action-btn">Reset Problem</button>
+</div>
+
+<script src="generators.js"></script>
 
 <script>
 const urlParams = new URLSearchParams(window.location.search);
@@ -34,6 +39,25 @@ pageSubtitle.innerText = exercise;
 const whiteBox =document.querySelector('.white-box');
 const questionState = document.getElementById('question-state');
 const answerState = document.getElementById('answer-state')
+
+const questionText =document.getElementById('question-text');
+const answerText =document.getElementById('answer-text');
+const nextBtn =document.getElementById('next-btn');
+
+function generateProblem(){
+  answerState.classList.add('hidden');
+  questionState.classList.remove('hidden');
+  pageSubtitle.innerText = exercise;
+
+if (window.mathGenerators && window.mathGenerators[exercise]) {
+  const problem = window.mathGenerators[exercise]();
+  questionText.innerText = problem.q;
+  answerText.innerText = problem.a;
+} else {
+  questionText.innerText = "Problem coming soon!"
+  answerText.innerText = "N/A";
+}
+}
 
 whiteBox.addEventListener('click', () => {
   if(answerState.classList.contains('hidden')) {

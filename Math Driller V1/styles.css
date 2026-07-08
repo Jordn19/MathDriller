@@ -91,3 +91,23 @@ align-content: center;
 .hidden {
   display: none;
 }
+
+.reset-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.action-btn {
+  font-family: 'League Gothic';
+  font-size: 26px;
+  padding: 12px 40px;
+  background-color: white;
+  border: 4px solid black;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #c3beb0;
+}
