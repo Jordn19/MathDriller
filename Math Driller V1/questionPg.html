@@ -24,7 +24,7 @@
     </main>
 
 <div class="reset-btn">
-  <button Id="next-btn" class="action-btn">Reset Problem</button>
+  <button id="next-btn" class="action-btn">Reset Problem</button>
 </div>
 
 <script src="generators.js"></script>
@@ -71,6 +71,8 @@ whiteBox.addEventListener('click', () => {
   }
 });
 
+nextBtn.addEventListener('click', generateProblem);
+generateProblem();
     </script>
   </body>
 </html>
